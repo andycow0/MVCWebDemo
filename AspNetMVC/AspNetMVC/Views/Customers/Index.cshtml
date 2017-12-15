@@ -1,0 +1,202 @@
+﻿@model IEnumerable<AspNetMVC.Models.Customers>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_01LayoutPage1.cshtml";
+}
+
+@section heads{
+    @Styles.Render("~/Content/Cgmh/Shared/DataProcessing.css")
+    <script src="~/Scripts/spa/Modules.js"></script>
+    <script src="~/Scripts/spa/Controllers.js"></script>
+    @Scripts.Render("~/bundles/modernizr")
+}
+
+@section jumbotron{
+    <h2>客戶清單</h2>
+}
+
+@section loader{
+    <div class="loader" id="loadering"></div>
+}
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+<div class="row" ng-controller="customersController">
+    <div class='col-sm-12'>
+        <div class="form-group">
+            <p>
+                <input type="text" class="form-control" ng-model="searchCompanyName.CompanyName" placeholder="Search company name..." />
+            </p>
+
+            <div class="col-sm-2 loading-div" id="loading-div">
+                <p>
+                    資料讀取中, 請稍後... <img src="@Url.Content("~/images/ajax-loader-gray.gif")">
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class='col-sm-12'>
+        <div class="form-group">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CompanyName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ContactName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Region)
+                    </th>
+                    @*<th>
+                             @Html.DisplayNameFor(model => model.ContactTitle)
+                         </th>
+                         <th>
+                             @Html.DisplayNameFor(model => model.Address)
+                         </th>
+                         <th>
+                             @Html.DisplayNameFor(model => model.City)
+                         </th>
+                         <th>
+                             @Html.DisplayNameFor(model => model.PostalCode)
+                         </th>
+                        <th>
+                                 @Html.DisplayNameFor(model => model.Country)
+                             </th>
+                             <th>
+                                 @Html.DisplayNameFor(model => model.Phone)
+                             </th>
+                             <th>
+                                 @Html.DisplayNameFor(model => model.Fax)
+                             </th>*@
+                    <th></th>
+                </tr>
+
+                <tr ng-repeat="c in Customers| filter: searchCompanyName">
+                    <td>{{c.CompanyName}}</td>
+                    <td>{{c.ContactName}}</td>
+                    <td>{{c.Region}}</td>
+                    @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { id = "{{c.CustomerID}}" }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.CustomerID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID })
+                                        </td>*@
+                    @*<td>{{c.ContactTitle}}</td>
+                        <td>{{c.Address}}</td>
+                        <td>{{c.City}}</td>
+
+                        <td>{{c.PostalCode}}</td>
+                        <td>{{c.Country}}</td>
+                            <td>{{c.Phone}}</td>
+                            <td>{{c.Fax}}</td>*@
+                </tr>
+
+            </table>
+
+        </div>
+        <pre>Page: {{currentPage }} | {{(totalCount/pageSize)| ceil}}</pre>
+        <pagination uib-pagination boundary-links="true"
+                    total-items="totalCount"
+                    ng-model="currentPage"
+                    class="pagination-sm"
+                    previous-text="上一頁"
+                    next-text="下一頁"
+                    first-text="第一頁"
+                    last-text="最後一頁"
+                    ng-change="pageChanged()">
+        </pagination>
+    </div>
+</div>
+
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Region)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostalCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fax)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Region)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostalCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fax)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CustomerID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID })
+                </td>
+            </tr>
+        }
+
+    </table>*@
+
+@section scripts {
+    @*@Scripts.Render("~/js/datetimepicker")*@
+
+    <script type="text/javascript">
+        $(window).load(function () {      //Do the code in the {}s when the window has loaded
+            $("#loadering").fadeOut(2000);  //Fade out the #loader div
+        });
+
+
+    </script>
+}
