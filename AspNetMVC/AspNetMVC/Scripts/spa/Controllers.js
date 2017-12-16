@@ -42,3 +42,4 @@ function LoadData($scope, $http) {
 
     GetData();
 }
+
