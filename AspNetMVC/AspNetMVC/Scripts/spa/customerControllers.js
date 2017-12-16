@@ -1,10 +1,6 @@
 ﻿
 
-app.controller('customersController', ['$scope', '$http',
-   LoadData
-]);
-
-function LoadData($scope, $http) {
+app.controller('customersController', function LoadData($scope, $http, customerService) {
     //$scope.searchCompanyName = "Anna";
 
     $scope.pageSize = 10;
@@ -17,8 +13,8 @@ function LoadData($scope, $http) {
     };
 
     var GetData = function () {
-        $http.get('/api/customer', { params: { CurrentPage: $scope.currentPage, PageSize: $scope.pageSize } })
-        .then(function (response) {
+        
+        customerService.getData($scope.currentPage, $scope.pageSize).then(function (response) {
             $scope.Customers = response.data.Data;
             $scope.totalCount = response.data.Total;
             $scope.IsLoad = false;
@@ -29,17 +25,8 @@ function LoadData($scope, $http) {
             $scope.IsLoad = false;
             alert('Data loading error!');
         });
-        //.error(function (data) {
-        //    alert('Data loading error!');
-        //});
-        //.complete(function (data) {
-        //    //alert('查詢完成');
-        //    //$("#datepicker").datepicker("refresh");
-        //    alert('Data loading complete!');
-        //});
-
     };
 
     GetData();
-}
+});
 

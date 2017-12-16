@@ -8,7 +8,8 @@
 @section heads{
     @Styles.Render("~/Content/Cgmh/Shared/DataProcessing.css")
     <script src="~/Scripts/spa/Modules.js"></script>
-    <script src="~/Scripts/spa/Controllers.js"></script>
+    <script src="~/Scripts/spa/customerServices.js"></script>
+    <script src="~/Scripts/spa/customerControllers.js"></script>
     @Scripts.Render("~/bundles/modernizr")
 }
 
@@ -31,7 +32,12 @@
                 <input type="text" class="form-control" ng-model="searchCompanyName.CompanyName" placeholder="Search company name..." />
             </p>
 
-            <div class="col-sm-2 loading-div" id="loading-div">
+            @*<div class="col-sm-2 loading-div" id="loading-div">
+                    <p>
+                        資料讀取中, 請稍後... <img src="@Url.Content("~/images/ajax-loader-gray.gif")">
+                    </p>
+                </div>*@
+            <div class="col-sm-2" ng-show="IsLoad">
                 <p>
                     資料讀取中, 請稍後... <img src="@Url.Content("~/images/ajax-loader-gray.gif")">
                 </p>
@@ -79,7 +85,7 @@
                     <td>{{c.CompanyName}}</td>
                     <td>{{c.ContactName}}</td>
                     <td>{{c.Region}}</td>
-                    <td  data-toggle="modal" data-target="#myModal">Detail</td>
+                    <td data-toggle="modal" data-target="#myModal">Detail</td>
                     @*<td>
                         @Html.ActionLink("Edit", "Edit", new { id = "{{c.CustomerID}}" }) |
                         @Html.ActionLink("Details", "Details", new { id = item.CustomerID }) |
@@ -113,8 +119,8 @@
 
     <!-- Button trigger modal -->
     @*<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-        Launch demo modal
-    </button>*@
+            Launch demo modal
+        </button>*@
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
