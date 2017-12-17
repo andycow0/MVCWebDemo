@@ -60,9 +60,18 @@ namespace AspNetMVC.APIs
             }
         }
         // GET: api/Customer/5
-        public string Get(int id)
+        public HttpResponseMessage Get(string id)
         {
-            return "value";
+            try
+            {               
+                var data = service.Get(id);
+                
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message.ToString());
+            }
         }
 
         // POST: api/Customer

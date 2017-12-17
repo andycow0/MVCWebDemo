@@ -32,9 +32,20 @@ function customerService($http, $q) {
                 .then(function (response) {
                     deferred.resolve(response);
                 }, function (response) {
-                    deferred.reject('There was an error: '+response);
+                    deferred.reject('There was an error: ' + response);
                 });
-            
+
+            return deferred.promise;
+        },
+        getDataWithID: function (id) {
+            var deferred = $q.defer();
+            $http.get('/api/customer', { params: { Id: id } })
+                .then(function (response) {
+                    deferred.resolve(response);
+                }, function (response) {
+                    deferred.reject('There was an error: ' + response);
+                });
+
             return deferred.promise;
         }
     }

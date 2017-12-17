@@ -48,45 +48,54 @@
         <div class="form-group">
             <table class="table">
                 <tr>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.CustomerID)
+                    </th>*@
                     <th>
                         @Html.DisplayNameFor(model => model.CompanyName)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.ContactName)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Region)
-                    </th>
                     @*<th>
-                             @Html.DisplayNameFor(model => model.ContactTitle)
-                         </th>
-                         <th>
-                             @Html.DisplayNameFor(model => model.Address)
-                         </th>
-                         <th>
-                             @Html.DisplayNameFor(model => model.City)
-                         </th>
-                         <th>
-                             @Html.DisplayNameFor(model => model.PostalCode)
-                         </th>
+                            @Html.DisplayNameFor(model => model.Region)
+                        </th>
                         <th>
-                                 @Html.DisplayNameFor(model => model.Country)
+                                 @Html.DisplayNameFor(model => model.ContactTitle)
                              </th>
                              <th>
-                                 @Html.DisplayNameFor(model => model.Phone)
+                                 @Html.DisplayNameFor(model => model.Address)
                              </th>
                              <th>
-                                 @Html.DisplayNameFor(model => model.Fax)
-                             </th>*@
+                                 @Html.DisplayNameFor(model => model.City)
+                             </th>
+                             <th>
+                                 @Html.DisplayNameFor(model => model.PostalCode)
+                             </th>
+                            <th>
+                                     @Html.DisplayNameFor(model => model.Country)
+                                 </th>
+                                 <th>
+                                     @Html.DisplayNameFor(model => model.Phone)
+                                 </th>
+                                 <th>
+                                     @Html.DisplayNameFor(model => model.Fax)
+                                 </th>*@
                     <th></th>
                 </tr>
 
                 <tr ng-repeat="c in Customers| filter: searchCompanyName">
+                    @*<td>{{c.CustomerID}}</td>*@
                     <td>{{c.CompanyName}}</td>
                     <td>{{c.ContactName}}</td>
-                    <td>{{c.Region}}</td>
-                    <td data-toggle="modal" data-target="#myModal">Detail</td>
-                    @*<td>
+                    <td data-toggle="modal" data-target="#myModal">
+                        <button type="button" ng-click="GetDataWithID(c.CustomerID)" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+                            Detail
+                        </button>
+                    </td>
+                    @*
+                        <td>{{c.Region}}</td>
+                        <td>
                         @Html.ActionLink("Edit", "Edit", new { id = "{{c.CustomerID}}" }) |
                         @Html.ActionLink("Details", "Details", new { id = item.CustomerID }) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID })
@@ -104,7 +113,7 @@
             </table>
 
         </div>
-        <pre>Page: {{currentPage }} | {{(totalCount/pageSize)| ceil}}</pre>
+        <pre ng-show="showPaging">Page: {{currentPage }} | {{(totalCount/pageSize)| ceil}}</pre>
         <pagination uib-pagination boundary-links="true"
                     total-items="totalCount"
                     ng-model="currentPage"
@@ -113,14 +122,11 @@
                     next-text="下一頁"
                     first-text="第一頁"
                     last-text="最後一頁"
-                    ng-change="pageChanged()">
+                    ng-change="pageChanged()"
+                    ng-show="showPaging">
         </pagination>
     </div>
 
-    <!-- Button trigger modal -->
-    @*<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-            Launch demo modal
-        </button>*@
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -130,7 +136,7 @@
                     <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                 </div>
                 <div class="modal-body">
-                    ...
+                    {{modalText}}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
