@@ -1,0 +1,32 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    FormsIdentity id = (FormsIdentity)User.Identity;
+    FormsAuthenticationTicket ticket = id.Ticket;
+    if (ticket != null)
+    {
+        using (Html.BeginForm("LogOff", "Accounts", FormMethod.Post, new { id = "logoutForm" }))
+        {
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">@ticket.Name , 您好</a></li>	
+				@*ticket.UserData*@
+                <li>
+					@Html.AntiForgeryToken()
+                    <a href="javascript:document.getElementById('logoutForm').submit()">登出</a>
+                </li>
+            </ul>
+        }
+    }
+
+}
+else
+{
+    <script type="text/javascript" language="javascript">
+        alert("登入失敗!");
+    </script>
+    @*<ul>
+            <li>@Html.ActionLink("註冊", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+            <li>@Html.ActionLink("登入", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        </ul>*@
+}
+
+
