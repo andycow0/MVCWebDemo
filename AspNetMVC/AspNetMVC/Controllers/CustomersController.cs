@@ -16,6 +16,7 @@ namespace AspNetMVC.Controllers
         private NORTHWNDEntities db = new NORTHWNDEntities();
 
         // GET: Customers
+        [Authorize]
         public ActionResult Index()
         {
             //return View(db.Customers.ToList());

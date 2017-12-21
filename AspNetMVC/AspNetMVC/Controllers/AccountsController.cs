@@ -32,13 +32,23 @@ namespace AspNetMVC.Controllers
                 if (LoginResult(loginUser))
                 {
                     FormsAuthentication.SetAuthCookie(loginUser.UserName, loginUser.RememberMe);
-                    return RedirectToAction("Index", "PainManage");
+                    return RedirectToAction("Index", "Customers");
                 }
                 string err = TempData["LoginErrMsg"].ToString() + "。";
                 ModelState.AddModelError("", TempData["LoginErrMsg"].ToString());
             }
 
             return View(loginUser);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+            FormsAuthentication.SignOut();
+            Session.RemoveAll();
+
+            return RedirectToAction("Login", "Accounts");   // Index, Home
         }
 
         private bool LoginResult(LoginMyViewModel loginUser)
@@ -56,12 +66,13 @@ namespace AspNetMVC.Controllers
 
             //if (result)
             //{
-            string returnCode = "0";    //jObject[""][0]["ReturnCode"].ToString();
+            var returnCode = string.Equals(loginUser.UserName.ToUpper(), "TEST") ?
+            0 : 1;    //jObject[""][0]["ReturnCode"].ToString();
 
-            if (returnCode.Equals("0"))
+            if (returnCode.Equals(0))
             {
                 //string userName = jObject[""][0]["doctorName"].ToString();
-                var userName = "Test";
+                var userName = "Test1234";
 
                 FormsAuthentication.RedirectFromLoginPage(loginUser.UserName, false);
 
@@ -82,12 +93,12 @@ namespace AspNetMVC.Controllers
 
                 return true;    //"登入成功";
             }
-            else if (returnCode.Equals("1"))
+            else if (returnCode.Equals(1))
             {
                 TempData["LoginErrMsg"] = "帳號或密碼不正確";
                 return false;
             }
-            else if (returnCode.Equals("7"))
+            else if (returnCode.Equals(7))
             {
                 TempData["LoginErrMsg"] = "該帳號不存在";
                 return false;
