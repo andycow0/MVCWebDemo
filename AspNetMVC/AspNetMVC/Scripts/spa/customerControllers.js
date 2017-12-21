@@ -1,5 +1,6 @@
 ﻿app.controller('customersController', function LoadData($scope, $http, customerService) {
-    //$scope.searchCompanyName = "Anna";
+    var vm = this;
+    //$scope.searchCompanyName.CompanyName = null;
     $scope.showPaging = true;
     $scope.pageSize = 10;
     $scope.totalCount = 0;
@@ -7,7 +8,7 @@
 
     $scope.pageChanged = function () {
         $scope.IsLoad = true;
-        GetData();        
+        GetData();
     };
 
     $scope.$watch('searchCompanyName.CompanyName', function () {
@@ -17,7 +18,7 @@
         else {
             $scope.showPaging = true;
         }
-    });
+    });   
 
     var GetData = function () {
         customerService.getData($scope.currentPage, $scope.pageSize).then(function (response) {
@@ -33,17 +34,29 @@
         });
     };
 
+    GetData();
+
     $scope.GetDataWithID = function (id) {
-        customerService.getDataWithID(id).then(function (response) {
-            $scope.modalText = response.data["CompanyName"];
+        customerService.getCustomer(id).then(function (response) {
+            $scope.customer = {
+                CompanyName: response.data["CompanyName"],
+                Region: response.data["Region"],
+                ContactName: response.data["ContactName"],
+
+            };
             //alert('Data loading success!');
         }, function (response) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-            $scope.modalText = "error";
+            
         });
     };
-    //GetDataWithID('ALFKI');
-    GetData();
+
+    $scope.RemoveCustomer = function (id) {
+        customerService.deleteCustomer(id).then(function (response) {
+            alert('Delete success!');
+            GetData();            
+        }, function (response) {
+            alert('Delete failed!');
+        });
+    };
 });
 

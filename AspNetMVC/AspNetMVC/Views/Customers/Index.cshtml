@@ -44,13 +44,16 @@
             </div>
         </div>
     </div>
+
+    <div ng-view></div>
+
     <div class='col-sm-12'>
         <div class="form-group">
             <table class="table">
                 <tr>
                     @*<th>
-                        @Html.DisplayNameFor(model => model.CustomerID)
-                    </th>*@
+                            @Html.DisplayNameFor(model => model.CustomerID)
+                        </th>*@
                     <th>
                         @Html.DisplayNameFor(model => model.CompanyName)
                     </th>
@@ -92,6 +95,9 @@
                         <button type="button" ng-click="GetDataWithID(c.CustomerID)" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
                             Detail
                         </button>
+                        <button type="button" ng-click="RemoveCustomer(c.CustomerID)" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+                            Delete
+                        </button>
                     </td>
                     @*
                         <td>{{c.Region}}</td>
@@ -113,7 +119,7 @@
             </table>
 
         </div>
-        <pre ng-show="showPaging">Page: {{currentPage }} | {{(totalCount/pageSize)| ceil}}</pre>
+        <pre ng-show="showPaging">Page: {{ currentPage }} | {{(totalCount/pageSize)| ceil}}</pre>
         <pagination uib-pagination boundary-links="true"
                     total-items="totalCount"
                     ng-model="currentPage"
@@ -133,10 +139,18 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <h4 class="modal-title" id="myModalLabel">{{customer.CompanyName}}</h4>
                 </div>
                 <div class="modal-body">
-                    {{modalText}}
+
+                    <div class="row">
+                        <div class="col-xs-3 col-sm-3">
+                            @Html.DisplayNameFor(model => model.ContactName)
+                        </div>
+                        <div class="col-xs-7 col-sm-7">
+                            {{customer.ContactName}}
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -145,85 +159,9 @@
             </div>
         </div>
     </div>
+
 </div>
 
-@*<table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CompanyName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ContactName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ContactTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Region)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PostalCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Country)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fax)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CompanyName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ContactName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ContactTitle)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Address)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.City)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Region)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PostalCode)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Country)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Phone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Fax)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.CustomerID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID })
-                </td>
-            </tr>
-        }
-
-    </table>*@
 
 @section scripts {
     @*@Scripts.Render("~/js/datetimepicker")*@

@@ -1192,6 +1192,7 @@
     <Content Include="Scripts\spa\Modules.js" />
     <Content Include="Scripts\spa\customerServices.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="App\CustomerApp\List.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

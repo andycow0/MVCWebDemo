@@ -38,8 +38,10 @@ namespace AspNetMVC
             //                            ));
 
             bundles.Add(new ScriptBundle("~/bundles/AgnularJs").Include(
-                        "~/Scripts/angular.js"
-                        /*, "~/Scripts/angular*"*/));
+                        "~/Scripts/angular.js",
+                        "~/Scripts/angular-route.js",
+                        "~/Scripts/angular-resource.min.js"
+                        /*"~/Scripts/angular*"*/));
         }
     }
 }
