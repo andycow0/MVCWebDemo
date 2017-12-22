@@ -1188,13 +1188,12 @@
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\spa\Controllers.js" />
+    <Content Include="Scripts\spa\customerControllers.js" />
     <Content Include="Scripts\spa\Modules.js" />
-    <Content Include="Scripts\spa\Services.js" />
+    <Content Include="Scripts\spa\customerServices.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="App\CustomerApp\List.html" />
+    <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1237,7 +1236,6 @@
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Shared\_01LayoutPage1.cshtml" />
     <Content Include="Scripts\version.json" />
-    <Content Include="Views\Shared\_LoginStatusPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

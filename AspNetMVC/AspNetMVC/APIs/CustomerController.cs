@@ -1,4 +1,5 @@
-﻿using AspNetMVC.Services;
+﻿using AspNetMVC.Models;
+using AspNetMVC.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +41,7 @@ namespace AspNetMVC.APIs
 
         [HttpGet]
         public HttpResponseMessage Get(int currentPage, int pageSize)
-        {           
+        {
             try
             {
                 //var pageSize = 10;
@@ -60,24 +61,63 @@ namespace AspNetMVC.APIs
             }
         }
         // GET: api/Customer/5
-        public string Get(int id)
+        public HttpResponseMessage Get(string id)
         {
-            return "value";
+            try
+            {
+                var data = service.Get(id);
+
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message.ToString());
+            }
         }
 
         // POST: api/Customer
-        public void Post([FromBody]string value)
+        public HttpResponseMessage Post(Customers customer)
         {
+            try
+            {
+                service.AddCustomer(customer);
+
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message.ToString());
+            }
         }
 
         // PUT: api/Customer/5
-        public void Put(int id, [FromBody]string value)
+        public HttpResponseMessage Put(Customers customer)
         {
+            try
+            {
+                service.SaveCustomer(customer);
+
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message.ToString());
+            }
         }
 
         // DELETE: api/Customer/5
-        public void Delete(int id)
+        public HttpResponseMessage Delete(string id)
         {
+            try
+            {
+                service.DeleteCustomer(id);
+
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message.ToString());
+            }
         }
     }
 }
