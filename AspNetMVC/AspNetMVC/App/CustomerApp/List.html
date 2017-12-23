@@ -1,1 +1,144 @@
-﻿
+﻿<div class="row" ng-controller="customersController">
+
+    <div class='col-sm-12'>
+        <p>
+            <input type="text" class="form-control" ng-model="searchCompanyName.CompanyName" placeholder="Search company name..." />
+        </p>
+    </div>
+    <!--<div class="col-sm-2" ng-show="IsLoad">
+        <p>
+            資料讀取中, 請稍後... <img src="~/images/ajax-loader-gray.gif">
+        </p>
+    </div>-->
+
+    <div class='col-sm-12'>
+        <div class="form-group">
+            <table class="table">
+                <tr>
+                    <th>
+                        公司名稱
+                    </th>
+                    <th>
+                        聯絡人姓名
+                    </th>
+                    <th></th>
+                </tr>
+
+                <tr ng-repeat="c in Customers| filter: searchCompanyName">
+
+                    <td>{{c.CompanyName}}</td>
+                    <td>{{c.ContactName}}</td>
+                    <td>
+                        <button type="button" ng-click="GetDataWithID(c.CustomerID)" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+                            Detail
+                        </button>
+                        <button type="button" ng-click="RemoveCustomer(c.CustomerID)" class="btn btn-danger btn-sm">
+                            Delete
+                        </button>
+                    </td>
+
+                    <!--<td>{{c.Region}}</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = "{{c.CustomerID}}" }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.CustomerID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID })
+                    </td>
+
+                    <td>{{c.ContactTitle}}</td>
+                    <td>{{c.Address}}</td>
+                    <td>{{c.City}}</td>
+
+                    <td>{{c.PostalCode}}</td>
+                    <td>{{c.Country}}</td>
+                    <td>{{c.Phone}}</td>
+                    <td>{{c.Fax}}</td>*@-->
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+
+    <pre ng-show="showPaging">Page: {{ currentPage }} | {{(totalCount/pageSize)| ceil}}</pre>
+
+    <pagination uib-pagination boundary-links="true"
+                total-items="totalCount"
+                ng-model="currentPage"
+                class="pagination-sm"
+                previous-text="上一頁"
+                next-text="下一頁"
+                first-text="第一頁"
+                last-text="最後一頁"
+                ng-change="pageChanged()"
+                ng-show="showPaging">
+    </pagination>
+
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">{{customer.CompanyName}}</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-xs-3 col-sm-3">
+                            公司代號
+                        </div>
+                        <div class="col-xs-7 col-sm-7">
+                            {{customer.CustomerID}}
+                        </div>
+                        <div class="col-xs-3 col-sm-3">
+                            公司名稱
+                        </div>
+                        <div class="col-xs-7 col-sm-7">
+                            {{customer.CompanyName}}
+                        </div>
+                        <div class="col-xs-3 col-sm-3">
+                            聯絡人姓名
+                        </div>
+                        <div class="col-xs-7 col-sm-7">
+                            {{customer.ContactName}}
+                        </div>
+                        <div class="col-xs-3 col-sm-3">
+                            聯絡人職稱
+                        </div>
+                        <div class="col-xs-7 col-sm-7">
+                            {{customer.ContactTitle}}
+                        </div>
+                        <div class="col-xs-3 col-sm-3">
+                            公司地址
+                        </div>
+                        <div class="col-xs-7 col-sm-7">
+                            {{customer.Address}}
+                        </div>
+                        <div class="col-xs-3 col-sm-3">
+                            國家
+                        </div>
+                        <div class="col-xs-7 col-sm-7">
+                            {{customer.Country}}
+                        </div>
+                        <div class="col-xs-3 col-sm-3">
+                            聯絡電話
+                        </div>
+                        <div class="col-xs-7 col-sm-7">
+                            {{customer.Phone}}
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

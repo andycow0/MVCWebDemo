@@ -14,6 +14,11 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         templateUrl: viewBase + 'List.html'
     });
 
+    $routeProvider.when('/Customers/Add', {
+        controller: 'customersAddController',
+        templateUrl: viewBase + 'Create.html'
+    });
+
     $locationProvider.html5Mode({
         enabled: true,
         requireBase: false

@@ -25,9 +25,10 @@ function customerService($http, $q) {
             return deferred.promise;
         },
 
-        AddCustomer: function (id) {
+        createCustomer: function (customer) {
             var deferred = $q.defer();
-            $http.post('/api/customer', { params: { Id: id } })
+            //$http.post('/api/customer', { params: { Customer: customer } })
+            $http.post('/api/customer', customer)
                 .then(function (response) {
                     deferred.resolve(response);
                 }, function (response) {

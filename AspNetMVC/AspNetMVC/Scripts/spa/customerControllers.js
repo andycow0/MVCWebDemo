@@ -1,10 +1,11 @@
 ﻿app.controller('customersController', function LoadData($scope, $http, customerService) {
-    var vm = this;
+    //var vm = this;
     //$scope.searchCompanyName.CompanyName = null;
     $scope.showPaging = true;
     $scope.pageSize = 10;
     $scope.totalCount = 0;
     $scope.currentPage = 1;
+
 
     $scope.pageChanged = function () {
         $scope.IsLoad = true;
@@ -18,7 +19,7 @@
         else {
             $scope.showPaging = true;
         }
-    });   
+    });
 
     var GetData = function () {
         customerService.getData($scope.currentPage, $scope.pageSize).then(function (response) {
@@ -39,21 +40,26 @@
     $scope.GetDataWithID = function (id) {
         customerService.getCustomer(id).then(function (response) {
             $scope.customer = {
+                CustomerID: response.data["CustomerID"],
                 CompanyName: response.data["CompanyName"],
                 Region: response.data["Region"],
                 ContactName: response.data["ContactName"],
-
+                ContactName: response.data["ContactName"],
+                ContactTitle: response.data["ContactTitle"],
+                Address: response.data["Address"],
+                Country: response.data["Country"],
+                Phone: response.data["Phone"],
             };
             //alert('Data loading success!');
         }, function (response) {
-            
+
         });
     };
 
     $scope.RemoveCustomer = function (id) {
         customerService.deleteCustomer(id).then(function (response) {
             alert('Delete success!');
-            GetData();            
+            GetData();
         }, function (response) {
             alert('Delete failed!');
         });
