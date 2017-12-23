@@ -5,7 +5,9 @@
     $scope.pageSize = 10;
     $scope.totalCount = 0;
     $scope.currentPage = 1;
-
+    $scope.enableSave = false;
+    $scope.Editable = false;
+    $scope.EditText = 'Edit';
 
     $scope.pageChanged = function () {
         $scope.IsLoad = true;
@@ -54,6 +56,42 @@
         }, function (response) {
 
         });
+    };
+
+    $scope.Editor = function () {
+        $scope.Editable = !$scope.Editable;
+        $scope.enableSave = !$scope.enableSave;
+        if ($scope.Editable) {
+            $scope.EditText = 'Cancel Edit';
+
+            $scope.OldCustomer = {
+                CustomerID: $scope.customer.CustomerID,
+                CompanyName: $scope.customer.CompanyName,
+                ContactName: $scope.customer.ContactName,
+                ContactTitle: $scope.customer.ContactTitle,
+                Address: $scope.customer.Address,
+                Country: $scope.customer.Country,
+                Phone: $scope.customer.Phone,
+                Region: $scope.customer.Region,
+
+            };
+
+        }
+        else {
+            $scope.OldCustomer = {};
+            $scope.EditText = 'Edit';
+        }
+    };
+
+    $scope.SaveChange = function () {        
+        if (!angular.equals($scope.OldCustomer, $scope.customer)) {
+            customerService.updateCustomer($scope.customer).then(function (response) {
+                alert('Update success!');
+                GetData();
+            }, function (response) {
+                alert('Update failed!');
+            });
+        }
     };
 
     $scope.RemoveCustomer = function (id) {

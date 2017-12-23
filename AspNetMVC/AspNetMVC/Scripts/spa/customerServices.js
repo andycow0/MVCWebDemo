@@ -38,9 +38,9 @@ function customerService($http, $q) {
             return deferred.promise;
         },
 
-        updateCustomer: function (id) {
+        updateCustomer: function (customer) {
             var deferred = $q.defer();
-            $http.put('/api/customer', { params: { Id: id } })
+            $http.put('/api/customer', customer)
                 .then(function (response) {
                     deferred.resolve(response);
                 }, function (response) {
