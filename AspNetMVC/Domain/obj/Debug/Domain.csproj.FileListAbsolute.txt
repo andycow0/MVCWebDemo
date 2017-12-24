@@ -1,0 +1,13 @@
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\bin\Debug\Domain.dll.config
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\bin\Debug\Domain.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\bin\Debug\Domain.pdb
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\bin\Debug\EntityFramework.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\bin\Debug\EntityFramework.xml
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\bin\Debug\zh-Hant\EntityFramework.resources.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\bin\Debug\zh-Hant\EntityFramework.SqlServer.resources.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\obj\Debug\Domain.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\obj\Debug\Domain.pdb
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\bin\Debug\Newtonsoft.Json.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\bin\Debug\Newtonsoft.Json.xml

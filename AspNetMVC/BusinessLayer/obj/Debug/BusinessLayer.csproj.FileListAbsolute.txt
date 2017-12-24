@@ -1,0 +1,16 @@
+C:\WorkPlace\MVCWebDemo\AspNetMVC\BusinessLayer\bin\Debug\BusinessLayer.dll.config
+C:\WorkPlace\MVCWebDemo\AspNetMVC\BusinessLayer\bin\Debug\BusinessLayer.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\BusinessLayer\bin\Debug\BusinessLayer.pdb
+C:\WorkPlace\MVCWebDemo\AspNetMVC\BusinessLayer\bin\Debug\Domain.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\BusinessLayer\bin\Debug\EntityFramework.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\BusinessLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\BusinessLayer\bin\Debug\Newtonsoft.Json.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\BusinessLayer\bin\Debug\Domain.pdb
+C:\WorkPlace\MVCWebDemo\AspNetMVC\BusinessLayer\bin\Debug\EntityFramework.xml
+C:\WorkPlace\MVCWebDemo\AspNetMVC\BusinessLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\WorkPlace\MVCWebDemo\AspNetMVC\BusinessLayer\bin\Debug\Newtonsoft.Json.xml
+C:\WorkPlace\MVCWebDemo\AspNetMVC\BusinessLayer\bin\Debug\zh-Hant\EntityFramework.resources.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\BusinessLayer\bin\Debug\zh-Hant\EntityFramework.SqlServer.resources.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+C:\WorkPlace\MVCWebDemo\AspNetMVC\BusinessLayer\obj\Debug\BusinessLayer.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\BusinessLayer\obj\Debug\BusinessLayer.pdb

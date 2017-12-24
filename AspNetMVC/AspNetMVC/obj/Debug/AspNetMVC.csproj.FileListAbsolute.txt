@@ -218,3 +218,7 @@ C:\WorkPlace\MVCWebDemo\AspNetMVC\AspNetMVC\bin\zh-Hant\Microsoft.Owin.Security.
 C:\WorkPlace\MVCWebDemo\AspNetMVC\AspNetMVC\obj\Debug\AspNetMVC.csprojResolveAssemblyReference.cache
 C:\WorkPlace\MVCWebDemo\AspNetMVC\AspNetMVC\obj\Debug\AspNetMVC.dll
 C:\WorkPlace\MVCWebDemo\AspNetMVC\AspNetMVC\obj\Debug\AspNetMVC.pdb
+C:\WorkPlace\MVCWebDemo\AspNetMVC\AspNetMVC\bin\BusinessLayer.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\AspNetMVC\bin\Domain.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\AspNetMVC\bin\BusinessLayer.pdb
+C:\WorkPlace\MVCWebDemo\AspNetMVC\AspNetMVC\bin\Domain.pdb

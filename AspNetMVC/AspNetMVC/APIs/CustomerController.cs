@@ -1,5 +1,7 @@
-﻿using AspNetMVC.Models;
-using AspNetMVC.Services;
+﻿//using AspNetMVC.Models;
+//using AspNetMVC.Services;
+using BusinessLayer.Service;
+using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -6,8 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using AspNetMVC.Models;
+//using AspNetMVC.Models;
 using Newtonsoft.Json;
+using Domain.Models;
 
 namespace AspNetMVC.Controllers
 {
