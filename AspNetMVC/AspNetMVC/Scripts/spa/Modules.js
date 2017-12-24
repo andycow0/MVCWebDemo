@@ -9,9 +9,15 @@ app.filter('ceil', function () {
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
     var viewBase = '/App/CustomerApp/';
 
+    $routeProvider.when('/Customers/', {
+        controller: 'customersController',
+        templateUrl: '/Customers/List'
+    });
+
     $routeProvider.when('/Customers/Index', {
         controller: 'customersController',
-        templateUrl: viewBase + 'List.html'
+        //    templateUrl: viewBase + 'List.html'
+        templateUrl: '/Customers/List'
     });
 
     $routeProvider.when('/Customers/Add', {

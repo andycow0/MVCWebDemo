@@ -51,6 +51,7 @@
                 Address: response.data["Address"],
                 Country: response.data["Country"],
                 Phone: response.data["Phone"],
+                Fax: response.data["Fax"],
             };
             //alert('Data loading success!');
         }, function (response) {
@@ -73,17 +74,39 @@
                 Country: $scope.customer.Country,
                 Phone: $scope.customer.Phone,
                 Region: $scope.customer.Region,
-
+                Fax: $scope.customer.Fax,
             };
 
         }
         else {
+            $scope.customer.CustomerID = $scope.OldCustomer.CustomerID;
+            $scope.customer.CompanyName = $scope.OldCustomer.CompanyName;
+            $scope.customer.ContactName = $scope.OldCustomer.ContactName;
+            $scope.customer.ContactTitle = $scope.OldCustomer.ContactTitle;
+            $scope.customer.Address = $scope.OldCustomer.Address;
+            $scope.customer.Country = $scope.OldCustomer.Country;
+            $scope.customer.Phone = $scope.OldCustomer.Phone;
+            $scope.customer.Region = $scope.OldCustomer.Region;
+            $scope.customer.Fax = $scope.OldCustomer.Fax;
+
             $scope.OldCustomer = {};
             $scope.EditText = 'Edit';
         }
+
     };
 
-    $scope.SaveChange = function () {        
+    $scope.Close = function () {
+        //$scope.Editable = !$scope.Editable;
+        //$scope.enableSave = !$scope.enableSave;
+        if ($scope.Editable) {
+            $scope.Editable = false;
+            $scope.enableSave = false;
+        }
+        $scope.OldCustomer = {};
+        $scope.EditText = 'Edit';
+    };
+
+    $scope.SaveChange = function () {
         if (!angular.equals($scope.OldCustomer, $scope.customer)) {
             customerService.updateCustomer($scope.customer).then(function (response) {
                 alert('Update success!');

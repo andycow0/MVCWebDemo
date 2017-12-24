@@ -127,6 +127,14 @@ namespace AspNetMVC.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult List()
+        {
+
+
+            return View(new Customers());
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -1238,6 +1238,7 @@
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Shared\_01LayoutPage1.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Customers\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
