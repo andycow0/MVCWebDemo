@@ -1,5 +1,6 @@
 ﻿//using AspNetMVC.Models;
 //using AspNetMVC.Services;
+using BusinessLayer.Interfaces;
 using BusinessLayer.Service;
 using Domain.Models;
 using System;
@@ -13,10 +14,11 @@ namespace AspNetMVC.APIs
 {
     public class CustomerController : ApiController
     {
-        private CustomerService service;
+        private ICustomerService service;
         public CustomerController()
         {
-            service = new CustomerService();
+            //service = new CustomerService();
+            service = new CustomerResitoryService();
         }
         // GET: api/Customer
         [HttpGet]
@@ -53,7 +55,9 @@ namespace AspNetMVC.APIs
 
                 totalCount = customers.Count();
 
-                var data = customers.Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+                //var data = customers.Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+                var data = customers.ToList().Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+
                 var result = new { Total = totalCount, Data = data };
                 return Request.CreateResponse(HttpStatusCode.OK, result);
             }
@@ -68,6 +72,9 @@ namespace AspNetMVC.APIs
         {
             try
             {
+                if (string.IsNullOrEmpty(id))
+                    throw new ArgumentNullException("id", "Is null or empty!");
+
                 var data = service.Get(id);
 
                 return Request.CreateResponse(HttpStatusCode.OK, data);

@@ -22,15 +22,15 @@ namespace AspNetMVC.Controllers
         {
             //return View(db.Customers.ToList());
 
-            var client = new WebClient();
-            client.Headers["Accept"] = "application/json";
-            var uri = client.DownloadString(new Uri("http://localhost:3427/api/Customer"));
+            //var client = new WebClient();
+            //client.Headers["Accept"] = "application/json";
+            //var uri = client.DownloadString(new Uri("http://localhost:3427/api/Customer"));
 
-            IList<Customers> data = JsonConvert.DeserializeObject<IList<Customers>>(uri);
+            //IList<Customers> data = JsonConvert.DeserializeObject<IList<Customers>>(uri);
 
 
-            return View(data);
-
+            //return View(data);
+            return View();
         }
 
         // GET: Customers/Details/5

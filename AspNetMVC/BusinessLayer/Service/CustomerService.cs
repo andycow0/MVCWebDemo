@@ -1,4 +1,7 @@
-﻿using Domain.Models;
+﻿using BusinessLayer.Interfaces;
+using DataAccessLayer.Interfaces;
+using DataAccessLayer.Repository;
+using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +11,8 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Service
 {
-    public class CustomerService
+    //  inherit interface [ICustomerService].
+    public class CustomerService : ICustomerService
     {
         private NORTHWNDEntities db;
         public CustomerService()
@@ -56,6 +60,50 @@ namespace BusinessLayer.Service
                 db.SaveChanges();
             }
 
+        }
+    }
+
+    public class CustomerResitoryService : ICustomerService
+    {
+        private IRepository<Customers> db;
+        public CustomerResitoryService()
+        {
+            db = new GenericRepository<Customers>();
+        }
+        public IQueryable<Customers> Get()
+        {
+            var result = db.Get();
+
+            return result.AsQueryable();
+        }
+        public Customers Get(string id)
+        {
+            var data = from c in db.Get()
+                       where c.CustomerID == id
+                       select c;
+
+            if (data.Count() > 0)
+            {
+                return data.First();
+            }
+            return null;
+        }
+
+
+        public void AddCustomer(Customers customer)
+        {
+            db.Insert(customer);
+        }
+
+        public void DeleteCustomer(string id)
+        {
+            var Customer = db.Get(id);
+            db.Delete(Customer);
+        }
+
+        public void SaveCustomer(Customers customer)
+        {            
+            db.Update(customer);
         }
     }
 }

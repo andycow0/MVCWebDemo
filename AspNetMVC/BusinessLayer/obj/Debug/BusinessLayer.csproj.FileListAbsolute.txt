@@ -14,3 +14,5 @@ C:\WorkPlace\MVCWebDemo\AspNetMVC\BusinessLayer\bin\Debug\zh-Hant\EntityFramewor
 C:\WorkPlace\MVCWebDemo\AspNetMVC\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
 C:\WorkPlace\MVCWebDemo\AspNetMVC\BusinessLayer\obj\Debug\BusinessLayer.dll
 C:\WorkPlace\MVCWebDemo\AspNetMVC\BusinessLayer\obj\Debug\BusinessLayer.pdb
+C:\WorkPlace\MVCWebDemo\AspNetMVC\BusinessLayer\bin\Debug\DataAccessLayer.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\BusinessLayer\bin\Debug\DataAccessLayer.pdb

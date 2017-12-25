@@ -222,3 +222,5 @@ C:\WorkPlace\MVCWebDemo\AspNetMVC\AspNetMVC\bin\BusinessLayer.dll
 C:\WorkPlace\MVCWebDemo\AspNetMVC\AspNetMVC\bin\Domain.dll
 C:\WorkPlace\MVCWebDemo\AspNetMVC\AspNetMVC\bin\BusinessLayer.pdb
 C:\WorkPlace\MVCWebDemo\AspNetMVC\AspNetMVC\bin\Domain.pdb
+C:\WorkPlace\MVCWebDemo\AspNetMVC\AspNetMVC\bin\DataAccessLayer.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\AspNetMVC\bin\DataAccessLayer.pdb
