@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Web.UI;
 
 namespace AspNetMVC.Controllers
 {
@@ -17,8 +18,12 @@ namespace AspNetMVC.Controllers
         //}
 
         [AllowAnonymous]
+        [HandleError]
+        [OutputCache(Duration = 100)] //, VaryByParam = "none", Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult Login()
         {
+            ViewBag.Time2 = DateTime.Now.ToLongTimeString();
+
             return View();
         }
 

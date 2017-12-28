@@ -65,20 +65,30 @@ namespace BusinessLayer.Service
 
     public class CustomerResitoryService : ICustomerService
     {
-        private IRepository<Customers> db;
+        private IRepository<Customers> _db;
         public CustomerResitoryService()
         {
-            db = new GenericRepository<Customers>();
+            if (_db == null)
+            {
+                _db = new GenericRepository<Customers>();
+            }
+        }
+        public CustomerResitoryService(IRepository<Customers> customerDB) : this()
+        {
+            if (customerDB != null)
+            {
+                this._db = customerDB;
+            }
         }
         public IQueryable<Customers> Get()
         {
-            var result = db.Get();
+            var result = _db.Get();
 
             return result.AsQueryable();
         }
         public Customers Get(string id)
         {
-            var data = from c in db.Get()
+            var data = from c in _db.Get()
                        where c.CustomerID == id
                        select c;
 
@@ -92,18 +102,18 @@ namespace BusinessLayer.Service
 
         public void AddCustomer(Customers customer)
         {
-            db.Insert(customer);
+            _db.Insert(customer);
         }
 
         public void DeleteCustomer(string id)
         {
-            var Customer = db.Get(id);
-            db.Delete(Customer);
+            var Customer = _db.Get(id);
+            _db.Delete(Customer);
         }
 
         public void SaveCustomer(Customers customer)
-        {            
-            db.Update(customer);
+        {
+            _db.Update(customer);
         }
     }
 }

@@ -11,3 +11,4 @@ C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\obj\Debug\Domain.dll
 C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\obj\Debug\Domain.pdb
 C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\bin\Debug\Newtonsoft.Json.dll
 C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\bin\Debug\Newtonsoft.Json.xml
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache

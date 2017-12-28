@@ -110,6 +110,7 @@
         if (!angular.equals($scope.OldCustomer, $scope.customer)) {
             customerService.updateCustomer($scope.customer).then(function (response) {
                 alert('Update success!');
+                //$scope.Editor();
                 GetData();
             }, function (response) {
                 alert('Update failed!');
