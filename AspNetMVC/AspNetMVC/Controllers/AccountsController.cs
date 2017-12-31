@@ -19,7 +19,7 @@ namespace AspNetMVC.Controllers
 
         [AllowAnonymous]
         [HandleError]
-        [OutputCache(Duration = 100)] //, VaryByParam = "none", Location = OutputCacheLocation.Client, NoStore = true)]
+        [OutputCache(Duration = 3600)] //, VaryByParam = "none", Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult Login()
         {
             ViewBag.Time2 = DateTime.Now.ToLongTimeString();
@@ -52,6 +52,11 @@ namespace AspNetMVC.Controllers
         {
             FormsAuthentication.SignOut();
             Session.RemoveAll();
+
+            //// Outputcache root
+            var url = Url.Action("Login", "Accounts");
+            //// Clean output cache by root
+            HttpResponse.RemoveOutputCacheItem(url);
 
             return RedirectToAction("Login", "Accounts");   // Index, Home
         }
