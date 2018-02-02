@@ -29,7 +29,7 @@ namespace AspNetMVC.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(LoginMyViewModel loginUser, string returnUrl)
         {
             if (ModelState.IsValid)
