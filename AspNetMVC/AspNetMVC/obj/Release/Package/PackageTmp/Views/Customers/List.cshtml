@@ -1,0 +1,162 @@
+﻿@model Domain.Models.Customers
+
+@{
+    Layout = null;
+}
+
+<div class="row" ng-controller="customersController">
+
+    <div class='col-sm-12'>
+        <p>
+            <input type="text" class="form-control" ng-model="searchCompanyName.CompanyName" placeholder="Search company name..." />
+        </p>
+    </div>
+
+    <div class='col-sm-12'>
+        <div class="form-group">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CompanyName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ContactName)
+                    </th>
+                    <th></th>
+                </tr>
+
+                <tr ng-repeat="c in Customers| filter: searchCompanyName">
+
+                    <td>{{c.CompanyName}}</td>
+                    <td>{{c.ContactName}}</td>
+                    <td>
+                        <button type="button" ng-click="GetDataWithID(c.CustomerID)" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+                            Detail
+                        </button>
+                        <button type="button" ng-click="RemoveCustomer(c.CustomerID)" class="btn btn-danger btn-sm">
+                            Delete
+                        </button>
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+
+    <pre ng-show="showPaging">Page: {{ currentPage }} | {{(totalCount/pageSize)| ceil}}</pre>
+
+    <pagination uib-pagination boundary-links="true"
+                total-items="totalCount"
+                ng-model="currentPage"
+                class="pagination-sm"
+                previous-text="上一頁"
+                next-text="下一頁"
+                first-text="第一頁"
+                last-text="最後一頁"
+                ng-change="pageChanged()"
+                ng-show="showPaging">
+    </pagination>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">{{customer.CompanyName}}</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-xs-3 col-sm-3">
+                            @Html.DisplayNameFor(model => model.CustomerID)
+                        </div>
+                        <div class="col-xs-7 col-sm-7">
+                            {{customer.CustomerID}}
+                        </div>
+
+                        <div class="col-xs-3 col-sm-3">
+                            @Html.DisplayNameFor(model => model.CompanyName)
+                        </div>
+                        <div class="col-xs-7 col-sm-7" ng-show="!Editable">
+                            {{customer.CompanyName}}
+                        </div>
+                        <div class="col-xs-7 col-sm-7" ng-show="Editable">
+                            <input class="form-control" type="text" ng-model="customer.CompanyName" />
+                        </div>
+
+                        <div class="col-xs-3 col-sm-3">
+                            @Html.DisplayNameFor(model => model.ContactName)
+                        </div>
+                        <div class="col-xs-7 col-sm-7" ng-show="!Editable">
+                            {{customer.ContactName}}
+                        </div>
+                        <div class="col-xs-7 col-sm-7" ng-show="Editable">
+                            <input class="form-control" type="text" ng-model="customer.ContactName" />
+                        </div>
+
+                        <div class="col-xs-3 col-sm-3">
+                            @Html.DisplayNameFor(model => model.ContactTitle)
+                        </div>
+                        <div class="col-xs-7 col-sm-7" ng-show="!Editable">
+                            {{customer.ContactTitle}}
+                        </div>
+                        <div class="col-xs-7 col-sm-7" ng-show="Editable">
+                            <input class="form-control" type="text" ng-model="customer.ContactTitle" />
+                        </div>
+
+                        <div class="col-xs-3 col-sm-3">
+                            @Html.DisplayNameFor(model => model.Address)
+                        </div>
+                        <div class="col-xs-7 col-sm-7" ng-show="!Editable">
+                            {{customer.Address}}
+                        </div>
+                        <div class="col-xs-7 col-sm-7" ng-show="Editable">
+                            <input class="form-control" type="text" ng-model="customer.Address" />
+                        </div>
+
+                        <div class="col-xs-3 col-sm-3">
+                            @Html.DisplayNameFor(model => model.Country)
+                        </div>
+                        <div class="col-xs-7 col-sm-7" ng-show="!Editable">
+                            {{customer.Country}}
+                        </div>
+                        <div class="col-xs-7 col-sm-7" ng-show="Editable">
+                            <input class="form-control" type="text" ng-model="customer.Country" />
+                        </div>
+
+                        <div class="col-xs-3 col-sm-3">
+                            @Html.DisplayNameFor(model => model.Phone)
+                        </div>
+                        <div class="col-xs-7 col-sm-7" ng-show="!Editable">
+                            {{customer.Phone}}
+                        </div>
+                        <div class="col-xs-7 col-sm-7" ng-show="Editable">
+                            <input class="form-control" type="text" ng-model="customer.Phone" />
+                        </div>
+
+                        <div class="col-xs-3 col-sm-3">
+                            @Html.DisplayNameFor(model => model.Region)
+                        </div>
+                        <div class="col-xs-7 col-sm-7" ng-show="!Editable">
+                            {{customer.Region}}
+                        </div>
+                        <div class="col-xs-7 col-sm-7" ng-show="Editable">
+                            <input class="form-control" type="text" ng-model="customer.Region" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="Editor()">{{EditText}}</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="Close()">Close</button>
+                    <button type="button" class="btn btn-primary" ng-show="enableSave" ng-click="SaveChange()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,16 @@
+C:\WorkPlace\MVCWebDemo\AspNetMVC\DataAccessLayer\bin\Release\DataAccessLayer.dll.config
+C:\WorkPlace\MVCWebDemo\AspNetMVC\DataAccessLayer\bin\Release\DataAccessLayer.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\DataAccessLayer\bin\Release\DataAccessLayer.pdb
+C:\WorkPlace\MVCWebDemo\AspNetMVC\DataAccessLayer\bin\Release\Domain.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\DataAccessLayer\bin\Release\EntityFramework.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\DataAccessLayer\bin\Release\EntityFramework.SqlServer.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\DataAccessLayer\bin\Release\Newtonsoft.Json.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\DataAccessLayer\bin\Release\Domain.pdb
+C:\WorkPlace\MVCWebDemo\AspNetMVC\DataAccessLayer\bin\Release\EntityFramework.xml
+C:\WorkPlace\MVCWebDemo\AspNetMVC\DataAccessLayer\bin\Release\EntityFramework.SqlServer.xml
+C:\WorkPlace\MVCWebDemo\AspNetMVC\DataAccessLayer\bin\Release\Newtonsoft.Json.xml
+C:\WorkPlace\MVCWebDemo\AspNetMVC\DataAccessLayer\bin\Release\zh-Hant\EntityFramework.resources.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\DataAccessLayer\bin\Release\zh-Hant\EntityFramework.SqlServer.resources.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\DataAccessLayer\obj\Release\DataAccessLayer.csprojResolveAssemblyReference.cache
+C:\WorkPlace\MVCWebDemo\AspNetMVC\DataAccessLayer\obj\Release\DataAccessLayer.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\DataAccessLayer\obj\Release\DataAccessLayer.pdb

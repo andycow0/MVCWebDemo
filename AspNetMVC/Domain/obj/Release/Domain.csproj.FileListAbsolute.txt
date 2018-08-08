@@ -1,0 +1,14 @@
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\bin\Release\Domain.dll.config
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\bin\Release\Domain.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\bin\Release\Domain.pdb
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\bin\Release\EntityFramework.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\bin\Release\EntityFramework.SqlServer.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\bin\Release\Newtonsoft.Json.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\bin\Release\EntityFramework.xml
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\bin\Release\EntityFramework.SqlServer.xml
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\bin\Release\Newtonsoft.Json.xml
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\bin\Release\zh-Hant\EntityFramework.resources.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\bin\Release\zh-Hant\EntityFramework.SqlServer.resources.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\obj\Release\Domain.dll
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\obj\Release\Domain.pdb
+C:\WorkPlace\MVCWebDemo\AspNetMVC\Domain\obj\Release\Domain.csprojResolveAssemblyReference.cache

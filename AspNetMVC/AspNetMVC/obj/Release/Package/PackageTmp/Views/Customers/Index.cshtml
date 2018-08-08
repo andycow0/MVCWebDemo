@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Domain.Models.Customers>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_01LayoutPage1.cshtml";
+}
+
+@section heads{
+    @Styles.Render("~/Content/Cgmh/Shared/DataProcessing.css")
+    <script src="~/Scripts/spa/Modules.js"></script>
+    <script src="~/Scripts/spa/customerServices.js"></script>
+    <script src="~/Scripts/spa/customerControllers.js?20180103"></script>
+    <script src="~/Scripts/spa/customerAddController.js"></script>
+    @Scripts.Render("~/bundles/modernizr")
+}
+
+@section jumbotron{
+    <h2>客戶清單</h2>
+}
+
+@section loader{
+    <div class="loader" id="loadering"></div>
+}
+
+
+<div class="row">
+    <div class='col-sm-12'>
+        <a href="/Customers/Add">Create New Customer</a> /
+        <a href="/Customers/Index">Customer Index</a>
+    </div>
+</div>
+
+<div ng-view></div>
+
+
+@section scripts {
+    @*@Scripts.Render("~/js/datetimepicker")*@
+
+    <script type="text/javascript">
+        $(window).load(function () {      //Do the code in the {}s when the window has loaded
+            $("#loadering").fadeOut(2000);  //Fade out the #loader div
+        });
+
+
+    </script>
+}

@@ -11,11 +11,19 @@ namespace BusinessLayer.Interfaces
     {
         IQueryable<Customers> Get();
 
+
         Customers Get(string id);
 
         void AddCustomer(Customers customer);
 
         void SaveCustomer(Customers customer);
         void DeleteCustomer(string id);
+
+
+        Task<IQueryable<Customers>> GetAsync();
+        Task<Customers> GetAsync(string id);
+        Task<bool> AddAsync(Customers customer);
+        Task<bool> SaveAsync(Customers customer);
     }
+
 }

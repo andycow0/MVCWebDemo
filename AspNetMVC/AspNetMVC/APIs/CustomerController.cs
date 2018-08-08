@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace AspNetMVC.APIs
@@ -44,18 +45,16 @@ namespace AspNetMVC.APIs
         }
 
         [HttpGet]
-        public HttpResponseMessage Get(int currentPage, int pageSize)
+        public async Task<HttpResponseMessage> Get(int currentPage, int pageSize)
         {
             try
             {
-                //var pageSize = 10;
                 var totalCount = 0;
-                //var currentPage = 1;
-                var customers = service.Get();
+                //var customers = service.Get();
+                var customers = await service.GetAsync();
 
                 totalCount = customers.Count();
 
-                //var data = customers.Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
                 var data = customers.ToList().Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
 
                 var result = new { Total = totalCount, Data = data };
@@ -68,14 +67,16 @@ namespace AspNetMVC.APIs
         }
 
         // GET: api/Customer/5
-        public HttpResponseMessage Get(string id)
+        public async Task<HttpResponseMessage> Get(string id)
         {
             try
             {
                 if (string.IsNullOrEmpty(id))
                     throw new ArgumentNullException("id", "Is null or empty!");
 
-                var data = service.Get(id);
+                //var data = service.Get(id);
+
+                var data = await service.GetAsync(id);
 
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
@@ -86,13 +87,21 @@ namespace AspNetMVC.APIs
         }
 
         // POST: api/Customer
-        public HttpResponseMessage Post(Customers customer)
+        public async Task<HttpResponseMessage> Post(Customers customer)
         {
             try
             {
-                service.AddCustomer(customer);
+                //service.AddCustomer(customer);
+                var result = await service.AddAsync(customer);
 
-                return Request.CreateResponse(HttpStatusCode.OK);
+                if (result)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError);
+                }
             }
             catch (Exception ex)
             {
@@ -101,13 +110,21 @@ namespace AspNetMVC.APIs
         }
 
         // PUT: api/Customer/5
-        public HttpResponseMessage Put(Customers customer)
+        public async Task<HttpResponseMessage> Put(Customers customer)
         {
             try
             {
-                service.SaveCustomer(customer);
+                //service.SaveCustomer(customer);
+                var result = await service.SaveAsync(customer);
 
-                return Request.CreateResponse(HttpStatusCode.OK);
+                if (result)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError);
+                }
             }
             catch (Exception ex)
             {
