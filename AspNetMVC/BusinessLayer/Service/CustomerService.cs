@@ -88,7 +88,7 @@ namespace BusinessLayer.Service
 
     public class CustomerResitoryService : ICustomerService
     {
-        string apiUrl = "https://dotnetcoredemo-208409.appspot.com/api/Customers";
+        string apiUrl = "https://dotnetcoredemo-217516.appspot.com/api/Customers";
 
         private IRepository<Customers> _db;
         public CustomerResitoryService()
